@@ -1,0 +1,27 @@
+use std::convert::From;
+
+#[allow(dead_code)]
+#[derive(Debug)]
+struct Number(i32);
+
+impl From<i32> for Number {
+    fn from(item: i32) -> Self {
+        Number(item)
+    }
+}
+
+impl PartialEq for Number {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+
+fn main() {
+    let num = Number::from(30);
+
+    let int = 30;
+    let num2: Number = int.into();
+
+    println!("My number is {:?} && {:?}", num, num2);
+    assert_eq!(num, num2);
+}
