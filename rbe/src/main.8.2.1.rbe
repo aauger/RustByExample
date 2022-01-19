@@ -1,0 +1,21 @@
+#![allow(unreachable_code)]
+
+fn main() {
+    let mut i = 0;
+    'outer: loop {
+        println!("Entered the outer loop");
+
+        'inner: loop {
+            if i == 1500 {
+                break 'outer;
+            }
+
+            i += 1;
+            println!("Entered the inner loop {i}");
+        }
+
+        println!("This point will never be reached");
+    }
+
+    println!("Exited the outer loop");
+}
