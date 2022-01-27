@@ -1,0 +1,25 @@
+fn age() -> u32 {
+    32
+}
+
+fn age_option() -> Option<u32> {
+    Some(12)
+}
+
+fn main() {
+    println!("tell me something about this age...");
+
+    let result = match age() {
+        n @ 0 => format!("{n}? don't exist yet!"),
+        n @ 1 ..= 35 => format!("at {n}, barely there!"),
+        n => format!("{n}? much too old!")
+    };
+
+    println!("{result}");
+    
+    match age_option() {
+        Some(n @ 100) => println!("Ahh.. exactly there. {n}..."),
+        n @ Some(12) => println!("something else.. something {}", n.unwrap()),
+        _ => println!("I should have been filled in!"),
+    }
+}
