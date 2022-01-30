@@ -4,7 +4,7 @@ enum TwoDThreeD {
 }
 
 struct Value {
-    i: i32
+    i: i32,
 }
 
 fn main() {
@@ -62,7 +62,7 @@ fn main() {
         println!("I don't like letters. Let's go with an emoticon :)!");
     }
 
-    /* 
+    /*
         If Let pattern not limited to simple enum types. It can destructure any struct!
     */
 
@@ -76,7 +76,7 @@ fn main() {
         println!("x: {x}, y: {y}, z: {z}");
     }
 
-    /* 
+    /*
         Notice how `if let` is merely an addition to standard structure deconstruction --
         same patterns, but only binds the necessary conditions -- irrefutable patterns vs refutable patterns
     */
@@ -90,5 +90,4 @@ fn main() {
 
     let Value { i: ivalue } = value;
     println!("pattern: {ivalue}");
-    
 }
