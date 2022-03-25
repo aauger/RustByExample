@@ -1,0 +1,37 @@
+fn main() {
+    #[derive(Debug)]
+    struct Person {
+        name: String,
+        age: Box<u8>,
+    }
+
+    let person = Person {
+        name: String::from("Alice"),
+        age: Box::new(20),
+    };
+
+    let person_two = Person {
+        name: String::from("George"),
+        age: Box::new(80),
+    };
+
+    // `name` is moved out of person, but `age` is referenced
+    let Person { name, ref age } = person;
+
+    let Person { name: ref snd_name, age: snd_age } = person_two;
+
+    println!("The person's age is {}", age);
+
+    println!("The person's name is {}", name);
+
+    println!("The second person's age is {}", snd_age);
+    println!("The second person's name is {}", snd_name);
+
+    // Error! borrow of partially moved value: `person` partial move occurs
+    //println!("The person struct is {:?}", person);
+
+    // `person` cannot be used but `person.age` can be used as it is not moved
+    println!("The person's age from person struct is {}", person.age);
+
+    println!("The second person's name is {}", person_two.name);
+}
